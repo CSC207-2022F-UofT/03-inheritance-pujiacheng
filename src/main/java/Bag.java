@@ -5,14 +5,20 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.util.ArrayList;
+
 public abstract class Bag {
     /*
-     * TODO: Create the following private instance variables
+     * do: Create the following private instance variables
      *       - a String named color
      *       - an int named numberOfContents
      *       - an int named capacity
      *       - an array of Strings named contents
      */
+    private String color;
+    private int numberOfContents;
+    private int capacity;
+    private ArrayList<String> contents;
 
 
 
@@ -26,6 +32,12 @@ public abstract class Bag {
      * be empty (e.g. numberOfContents is 0 and an empty String array for
      * its contents.)
      */
+    public Bag(String a, int b) {
+        this.color = a;
+        this.capacity = b;
+        this.numberOfContents = 0;
+        this.contents = new ArrayList<>();
+    }
 
 
 
@@ -37,6 +49,18 @@ public abstract class Bag {
      *           - getNumberOfContents
      *           - getCapacity
      */
+    public String getColor() {
+        return this.color;
+    }
+
+    public int getNumberOfContents() {
+        return this.numberOfContents;
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
+
 
 
 
@@ -45,6 +69,9 @@ public abstract class Bag {
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
+    public void setColor(String a) {
+        this.color = a;
+    }
 
 
 
@@ -60,6 +87,15 @@ public abstract class Bag {
      *       This method should return true if the item was added
      *       and false otherwise.
      */
+    public boolean addItem(String b) {
+        if (this.numberOfContents < this.capacity) {
+            this.contents.add(b);
+            this.numberOfContents += 1;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 
@@ -75,7 +111,14 @@ public abstract class Bag {
      *
      * @return
      */
-
+    public String popItem() {
+        if (this.numberOfContents == 0) {
+            return "null";
+        } else {
+            this.numberOfContents -= 1;
+            return this.contents.remove(-1);
+        }
+    }
 
 
 
@@ -87,6 +130,7 @@ public abstract class Bag {
      */
     public void increaseCapacity(int n) {
         // TODO: Implement this method.
+        this.capacity += n;
 
     }
 
